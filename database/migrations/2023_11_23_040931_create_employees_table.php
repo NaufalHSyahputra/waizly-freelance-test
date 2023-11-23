@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('job_title');
             $table->integer('salary');
-            $table->stringr('department');
+            $table->string('department');
             $table->date('join_date');
             $table->timestamps();
             $table->softDeletes();
