@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +25,13 @@ Route::get('/', function () {
 Route::controller(AuthController::class)->prefix('auth')->group(function () {
     Route::post('login', 'login');
     Route::middleware("auth:sanctum")->get('logout', 'logout');
+});
+
+Route::controller(EmployeeController::class)->middleware("auth:sanctum")->prefix('employee')->group(function() {
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+    Route::get('/{employee}', 'show');
+    Route::put('/{employee}', 'update');
+    Route::delete('/{employee}', 'destroy');
 });
 
