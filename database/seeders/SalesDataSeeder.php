@@ -12,6 +12,9 @@ class SalesDataSeeder extends Seeder
      */
     public function run(): void
     {
+        //Remove all data before insert new data
+        DB::table('sales_data')->truncate();
+
         $data = [
             ["sales_id" => 1, "employee_id" => 1, "sales" => 15000],
             ["sales_id" => 2, "employee_id" => 2, "sales" => 12000],
@@ -22,6 +25,7 @@ class SalesDataSeeder extends Seeder
             ["sales_id" => 7, "employee_id" => 6, "sales" => 13000],
             ["sales_id" => 8, "employee_id" => 2, "sales" => 14000],
         ];
+        
         //Insert $data to SalesData Table
         DB::table('sales_data')->insert($data);
     }
