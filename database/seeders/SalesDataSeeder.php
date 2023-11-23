@@ -22,7 +22,7 @@ class SalesDataSeeder extends Seeder
             ["sales_id" => 7, "employee_id" => 6, "sales" => 13000],
             ["sales_id" => 8, "employee_id" => 2, "sales" => 14000],
         ];
-        //Insert $data to Employees Table
+        //Insert $data to SalesData Table
         DB::table('sales_data')->insert($data);
     }
 }
