@@ -16,7 +16,7 @@ class EmployeeController extends Controller
         //Get All Employees And Return it to JSON
         $employees = Employee::all();
         return response()->json([
-            'messages' => 'Get All Employees Successfully',
+            'message' => 'Employees retrieved successfully',
             'data' => $employees
         ]);
     }
@@ -34,7 +34,7 @@ class EmployeeController extends Controller
             'join_date',
         ]));
         return response()->json([
-            'messages' => 'Create Employees Successfully',
+            'message' => 'Create Employees Successfully',
             'data' => $employee
         ], 201);
     }
@@ -46,7 +46,7 @@ class EmployeeController extends Controller
     {
         //Get Employee And Return it to JSON
         return response()->json([
-            'messages' => 'Get Employee Successfully',
+            'message' => 'Get Employee Successfully',
             'data' => $employee
         ], 200);
         
@@ -57,12 +57,6 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //Check if Employee data exists
-        if (!$employee) { 
-            return response()->json([
-                'messages' => 'Employee Not Found',
-            ], 404);
-        }
         $employee->name = $request->name;
         $employee->job_title = $request->job_title;
         $employee->salary = $request->salary;
@@ -70,7 +64,7 @@ class EmployeeController extends Controller
         $employee->join_date = $request->join_date;
         $employee->save();
         return response()->json([
-            'messages' => 'Update Employee Successfully',
+            'message' => 'Update Employee Successfully',
             'data' => $employee
         ], 200);
     }
@@ -83,7 +77,7 @@ class EmployeeController extends Controller
         //Delete Employee
         $employee->delete();
         return response()->json([
-            'messages' => 'Delete Employee Successfully',
+            'message' => 'Delete Employee Successfully',
         ], 200);
     }
 }

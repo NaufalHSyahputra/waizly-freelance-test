@@ -27,7 +27,7 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
     Route::middleware("auth:sanctum")->get('logout', 'logout');
 });
 
-Route::controller(EmployeeController::class)->prefix('employee')->group(function() {
+Route::controller(EmployeeController::class)->middleware("auth:sanctum")->prefix('employee')->group(function() {
     Route::get('/', 'index');
     Route::post('/', 'store');
     Route::get('/{employee}', 'show');
