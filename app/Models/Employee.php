@@ -10,5 +10,13 @@ class Employee extends Model
     //Set Custom Primary key to Employee Model
     protected $primaryKey = 'employee_id';
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'job_title',
+        'salary',
+        'department',
+        'join_date'
+    ];
     
 }
