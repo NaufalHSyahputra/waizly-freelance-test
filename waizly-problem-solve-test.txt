@@ -1,0 +1,80 @@
+Problem Solving Basic - Test 1
+<?php
+$totals=[];
+$arr = array(1,2,3,4,5);
+for ($i = 0; $i<count($arr); $i++){
+	$total = 0;
+	for ($j = 0; $j<count($arr); $j++){
+		if ($j != $i) {
+			$total += $arr[$j];
+		}
+	}
+	array_push($totals, $total);
+} 
+echo min($totals) . " " . max($totals);
+
+
+/////////////////////////////////////////////////
+Problem Solving Basic - Test 2
+<?php
+function plusMinus($arr) {
+    $n = count($arr);
+    $positive = 0;
+    $negative = 0;
+    $zero = 0;
+
+    foreach ($arr as $num) {
+        if ($num > 0) {
+            $positive++;
+        } elseif ($num < 0) {
+            $negative++;
+        } else {
+            $zero++;
+        }
+    }
+
+    $ratioPositive = $positive / $n;
+    $ratioNegative = $negative / $n;
+    $ratioZero = $zero / $n;
+
+    echo number_format($ratioPositive, 6, '.', '');
+    echo "\n";
+    echo number_format($ratioNegative, 6, '.', '');
+    echo "\n";
+    echo number_format($ratioZero, 6, '.', '');
+}
+
+$stdin = fopen("php://stdin", "r");
+fscanf($stdin, "%d\n", $n);
+$arr = array();
+for ($i = 0; $i < $n; $i++) {
+    fscanf($stdin, "%d", $arr[$i]);
+}
+
+plusMinus($arr);
+?>
+
+/////////////////////////////////////////////////
+Problem Solving Basic - Test 3
+function convertToMilitaryTime($time) {
+    $parts = explode(':', $time);
+    $hours = (int) $parts[0];
+    $minutes = (int) $parts[1];
+    $seconds = (int) $parts[2];
+    $amPm = substr($time, -2);
+
+    if ($amPm == 'AM' || $amPm == 'am') {
+        if ($hours == 12) {
+            $hours = '00';
+        }
+    } else if ($amPm == 'PM' || $amPm == 'pm') {
+        if ($hours != 12) {
+            $hours += 12;
+        }
+    }
+
+    return sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+}
+
+echo convertToMilitaryTime('02:30:00PM'); // Output: 14:30:00
+echo convertToMilitaryTime('09:45:00AM'); // Output: 09:45:00
